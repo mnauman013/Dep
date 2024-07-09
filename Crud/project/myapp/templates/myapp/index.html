@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Books</h1>
+        <a href="{% url 'book_create' %}">Add new book</a>
+        <ul>
+            {% for book in books %}
+                <li>
+                    <a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a> - 
+                    <a href="{% url 'book_edit' book.pk %}">Edit</a> - 
+                    <a href="{% url 'book_delete' book.pk %}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
